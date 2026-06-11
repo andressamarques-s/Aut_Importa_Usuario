@@ -23,7 +23,7 @@ function ExportarMoodle() {
  
 
 
-// --- 1. CSV ---
+// ---  CSV ---
 try {
     let wbCSV = app.Workbooks.Add();
     let wsCSV = wbCSV.Sheets(1);
@@ -52,7 +52,7 @@ try {
 } catch(err) {
     MsgBox("Erro CSV: " + err.message, 48, "Erro");
 }
- // --- 2. PDF ---
+ // ---  PDF ---
     try {
         let wsPDF = wb.Sheets("Etapa 02. imprimir PDF");
         wsPDF.PrintOut(1, 1, 1, false, "", true, false, caminhoPDF);
@@ -60,7 +60,7 @@ try {
         MsgBox("Erro PDF: " + err.message, 48, "Erro");
     }
  
-    // --- 3. XLSX ---
+    // ---  XLSX ---
     try {
         let wbNovo = app.Workbooks.Add();
         let wsNovo = wbNovo.Sheets(1);
