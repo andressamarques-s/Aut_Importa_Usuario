@@ -9,7 +9,7 @@ function ExportarMoodle() {
     let curso   = String(wsOrigem.Cells(4, 7).Value2 || "");
     let nomeArq = `${sigla} - ${unidade} - ${curso} - ${ano}`;
     
-    let pasta = "\\\\10.11.20.30\\SST - Saude e Seguranca$\\04. Suporte de sistemas\\04.03. Cadastro de usuários\\01.07.01. Histórico\\Moodle\\";
+    let pasta = "\\\\60.21.20.10\\SST - Saude e Seguranca$\\05. Suporte de sistemas\\04.06. Cadastro de usuários\\01.08.01. Histórico\\Moodle\\";
     let caminhoCSV  = `${pasta}CSV\\CSV - ${ano}\\${nomeArq}.csv`;
     let caminhoPDF  = `${pasta}PDF\\PDF - ${ano}\\${nomeArq}.pdf`;
     let caminhoXLSX = `${pasta}XLSX\\XLSX - ${ano}\\${nomeArq}.xlsx`;
