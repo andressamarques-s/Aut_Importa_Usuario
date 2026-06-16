@@ -23,16 +23,22 @@ function ExportarMoodle() {
  
 
 
-// ---  CSV ---
+// --- 1. CSV ---
 try {
+    
     let wbCSV = app.Workbooks.Add();
     let wsCSV = wbCSV.Sheets(1);
     
-    // Cabeçalho na célula A1
-    wsCSV.Cells(1, 1).Value2 = "username,firstname,lastname,email,password,institution,department,course1,group1";
+   
+    let cabecalhos = ["username", "firstname", "lastname", "email", "password", "institution", "department", "course1", "group1"];
+    for (let c = 0; c < cabecalhos.length; c++) {
+        wsCSV.Cells(1, c + 1).Value2 = cabecalhos[c];
+    }
+    
     
     for (let i = 4; i <= ultimaLinha; i++) {
-        let row = i - 2;
+        let row = i - 2; 
+        
         let siglaUnid = String(wsOrigem.Cells(i, 2).Value2 || "").replace(/"/g, "");
         let nomeUnid  = String(wsOrigem.Cells(i, 3).Value2 || "").replace(/"/g, "");
         let nomeCompl = String(wsOrigem.Cells(i, 4).Value2 || "").replace(/"/g, "");
@@ -42,13 +48,23 @@ try {
         let lastname  = "- " + siglaUnid + "/" + nomeUnid;
         let group1    = siglaUnid + "/" + nomeUnid;
 
-        wsCSV.Cells(row, 1).Value2 = cpf + "," + nomeCompl + "," + lastname + "," + email + ",teste123," + nomeUnid + "," + siglaUnid + "," + curso + "," + group1;
+    
+        wsCSV.Cells(row, 1).Value2 = cpf;
+        wsCSV.Cells(row, 2).Value2 = nomeCompl;
+        wsCSV.Cells(row, 3).Value2 = lastname;
+        wsCSV.Cells(row, 4).Value2 = email;
+        wsCSV.Cells(row, 5).Value2 = "teste123";
+        wsCSV.Cells(row, 6).Value2 = nomeUnid;
+        wsCSV.Cells(row, 7).Value2 = siglaUnid;
+        wsCSV.Cells(row, 8).Value2 = curso;
+        wsCSV.Cells(row, 9).Value2 = group1;
     }
     
     app.DisplayAlerts = false;
-    wbCSV.SaveAs(caminhoCSV, 6);
+    wbCSV.SaveAs(caminhoCSV, 6); 
     wbCSV.Close(false);
     app.DisplayAlerts = true;
+
 } catch(err) {
     MsgBox("Erro CSV: " + err.message, 48, "Erro");
 }
