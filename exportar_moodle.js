@@ -1,5 +1,5 @@
 
-const CAMINHO_BASE = "\\\\SEU-SERVIDOR\\SUA-PASTA-COMPARTILHADA$\\Suporte de sistemas\\Cadastro de usuarios\\Historico\\Moodle\\";
+const CAMINHO_BASE = "\\\\SEU-SERVIDOR\\SUA-PASTA-COMPARTILHADA$\\Nome da Pasta\\";
 
 
 const TAMANHO_SENHA_TEMPORARIA = 10;
@@ -43,7 +43,7 @@ function ExportarMoodle() {
         senhasPorLinha[i] = gerarSenhaTemporaria(TAMANHO_SENHA_TEMPORARIA);
     }
 
-    // --- 1. CSV ---
+    // ---  CSV ---
     try {
 
         let wbCSV = app.Workbooks.Add();
